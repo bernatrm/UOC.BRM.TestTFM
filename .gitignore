@@ -23,3 +23,5 @@ $RECYCLE.BIN/
 temp/
 data/
 .ipynb_checkpoints/
+__pycache__/
+test/
