@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from queue import Empty
 
 to_integer = lambda i: (int(float(i)))
 hoteles = ["02", "04", "05", "15", "16", "21", "22"]
@@ -37,11 +38,11 @@ def getPathToCleanedHistoricalReservasHotel(format: str) -> str:
     return (fr"data\cleaned\historical\reservas\{format}\historico_reservas.{format}")
 
 def getPathToCleanedHistoricalReservasDiariasHotel(format: str) -> str:
-    """Given a root path, hotel and format builds dest string path to Reservas Diarias"""
+    """Given a format builds dest string path to Cleaned Reservas Diarias File"""
     return (fr"data\cleaned\historical\reservas_diarias\{format}\historico_reservas_diarias.{format}")
 
 def getPathToProcessedSnapshotReservas(format: str, snapshot_date: datetime) -> str:
-    """Given a root path, hotel and format builds dest string path to Reservas Diarias"""  
+    """Given a format and snapshot date builds dest string path to Reservas Diarias Snapshot File"""  
     year = f"{snapshot_date.year}"
     month = f"{snapshot_date.strftime('%m')}"
     day = f"{snapshot_date.strftime('%d')}"
@@ -51,8 +52,21 @@ def getPathToProcessedSnapshotReservas(format: str, snapshot_date: datetime) -> 
     
     return (fr"data\processed\snapshots\reservas\{format}\{year}\{month}\{year}{month}{day}_reservas.{format}")
 
-# 'data\\processed\\snapshots\\reservas\\csv\\2010\\07'
-# createDirIfNoExists('data\\processed\\snapshots\\reservas\\csv\\2010')
+def getPathToProcessedSnapshotReservasFolder(format: str, year: str) -> str:
+    """Given a format builds dest string path to Reservas Diarias Snapshot main folder"""  
+    
+    if year =="":
+        return (fr"data\processed\snapshots\reservas\{format}")
+    else:
+        return (fr"data\processed\snapshots\reservas\{format}\{year}")
+
+def getPathToProcessedSnapshotOcupacion(format: str, year: str) -> str:
+    """Given a format builds dest string path to Ocupacion Snapshot file"""
+    
+    if year =="":
+        return (fr"data\processed\snapshots\ocupacion\{format}\ocupacion.{format}")
+    else:
+        return (fr"data\processed\snapshots\ocupacion\{format}\{year}_ocupacion.{format}")
 
 
 if __name__ == "__main__":
