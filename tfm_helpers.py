@@ -68,6 +68,10 @@ def getPathToProcessedSnapshotOcupacion(format: str, year: str) -> str:
     else:
         return (fr"data\processed\snapshots\ocupacion\{format}\{year}_ocupacion.{format}")
 
+def getPathToProcessedSnapshotResumenOcupacion(format: str) -> str:
+    """Given a format builds dest string path to Resumen Ocupacion Snapshot file"""
+    
+    return (fr"data\processed\snapshots\resumen_ocupacion\{format}\resumen_ocupacion.{format}")
 
 if __name__ == "__main__":
     print("Helpers for TFM project")
