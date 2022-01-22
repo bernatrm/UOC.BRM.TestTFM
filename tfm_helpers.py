@@ -3,6 +3,7 @@ from datetime import datetime
 from queue import Empty
 
 to_integer = lambda i: (int(float(i)))
+data_source_path = r"C:\Datos\UOC\OneDrive - Universitat Oberta de Catalunya\TFM\Datos"
 hoteles = ["02", "04", "05", "15", "16", "21", "22"]
 
 def getListOfFiles(path: str) -> list:
@@ -24,6 +25,11 @@ def getSourcePathToHistoricalReservasHotel(path: str, hotel: str) -> str:
 def getSourcePathToHistoricalReservasDiariasHotel(path: str, hotel: str) -> str:
     """Given a root path and hotel, builds source stirng path to Historico Reservas Diarias"""
     return (fr"{path}\Historicos\ReservasDiarias\{hotel}")
+
+def getSourcePathToHistoricalPresupuestoTiposHabitacionHotel(path: str, hotel: str) -> str:
+    """Given a root path and hotel, builds source stirng path to Presupuesto Tipos Habitación de un Hotel"""
+    return (fr"{path}\Historicos\PresupuestoTiposHabitacion\{hotel}")
+
 
 def getPathToProcessedHistoricalReservasHotel(hotel: str, format: str) -> str:
     """Given a hotel and format builds dest string path to Reservas"""
